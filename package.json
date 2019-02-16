@@ -1,0 +1,22 @@
+{
+  "name": "meme-economy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "kym.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Omar-Riaz/Meme-Economy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Omar-Riaz/Meme-Economy/issues"
+  },
+  "homepage": "https://github.com/Omar-Riaz/Meme-Economy#readme",
+  "dependencies": {
+    "nodeyourmeme": "^2.0.0"
+  }
+}
