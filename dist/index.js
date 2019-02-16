@@ -3,36 +3,38 @@
 var nodeyourmeme = require('nodeyourmeme');
 var mongoose = require('mongoose');
 
-//add 10 random memes to the db
-var memes = [];
+//get 10 ranom memes
+var randomMemePromises = [];
 for (var i = 0; i < 10; i++) {
-  nodeyourmeme.random().then(function (value) {
-    console.log("added following meme to DB: " + value);
-    memes.push(value);
-  }, function (err) {
-    console.log("what the fucc");
-    console.log(err);
-  });
+  randomMemePromises.push(nodeyourmeme.random());
 }
-mongoose.connect('mongodb://<OmarRiaz75035>:<Dash@12Banana>@ds237955.mlab.com:37955/memeql');
-
-//populate the database with the memes
-var Schema = mongoose.Schema;
-
-var ObjectId = Schema.ObjectId;
-var MemeSchema = new Schema({
-  id: ObjectId,
-  base: String
-});
-
-var MemeModel = mongoose.model('MemeModel', MemeSchema);
-
-//turn all memes into models
-var memesModels = memes.map(function (meme) {
-  return new MemeModel({
-    base: meme.name
-  });
-});
 
 //save models into DB
-MemeModel.collection.insert(memeModels);
+Promise.all(randomMemePromises).then(function (memes) {
+  var db_connection_string = "mongodb://Omar:dash1234@ds237955.mlab.com:37955/memeql";
+  mongoose.connect(db_connection_string, { useNewUrlParser: true });
+  //populate the database with the memes
+  var Schema = mongoose.Schema;
+
+  var ObjectId = Schema.ObjectId;
+  var MemeSchema = new Schema({
+    id: ObjectId,
+    base: String
+  });
+
+  var MemeModel = mongoose.model('MemeModel', MemeSchema);
+  //turn all memes into models
+  var memeModels = memes.map(function (meme) {
+    return new MemeModel({
+      base: meme.name
+    });
+  });
+
+  MemeModel.collection.insertMany(memeModels, function (err, docs) {
+    if (err) {
+      console.error("error occured:" + err);
+    } else {
+      console.log("Multiple documents inserted to Collection");
+    };
+  });
+});
