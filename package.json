@@ -2,7 +2,7 @@
   "name": "meme-economy",
   "version": "1.0.0",
   "description": "",
-  "main": "kym.js",
+  "main": "index.js",
   "scripts": {
     "test": "test",
     "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Omar-Riaz/Meme-Economy#readme",
   "dependencies": {
+    "mongoose": "^5.4.13",
     "nodeyourmeme": "^2.0.0"
   },
   "devDependencies": {
