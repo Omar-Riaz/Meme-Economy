@@ -1,18 +1,11 @@
-var express = require('express'),
-  app = express(),
-  port = process.env.PORT || 3000,
-  mongoose = require('mongoose'),
-  User = require('./api/models/user'), //created model loading here
-  bodyParser = require('body-parser');
+var express = require('express');
+var app = express();
+var port = process.env.PORT || 3005;
 
-  // // mongoose instance connection url connection
-  // mongoose.Promise = global.Promise;
-  // mongoose.connect('mongodb://localhost/meme-economy');
+var apiRoutes = require('./api/Routes');
 
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(bodyParser.json());
-  app.use(require('./api/routes'));
+app.use('/api', apiRoutes);
 
-app.listen(PORT, () => {
-  console.log(`I'll be right by your side till port ${PORT}`)
+app.listen(port, function() {
+  console.log("I'll be right by your side till port " + port);
 });
