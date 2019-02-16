@@ -1,0 +1,3 @@
+function CreateUser(req, res) {
+
+}
