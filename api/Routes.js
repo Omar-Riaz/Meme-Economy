@@ -1,7 +1,7 @@
 // Filename: api-routes.js
 // Initialize express router
-let router = require('express').Router();
-let user = require('./controllers/UserController');
+var router = require('express').Router();
+var userController = require('./controllers/UserController.js');
 
 // Set default API response
 router.get('/', function (req, res) {   //getting data from server
@@ -11,22 +11,9 @@ router.get('/', function (req, res) {   //getting data from server
     });
 });
 
-router.post('/user', function (req, res) {    //uploading data - update or creating new data
-  // TODO Create a new user and put them in the db
-});
+router.post('/register', userController.register);
 
-//configuring the route
-var jwt = require('express-jwt');
-var auth = jwt({
-  secret: 'secret',
-  userProperty: 'payload'   //user
-})
-
-//applying the route
-//router.get('/profile', auth, prof.profileRead);
-router.post('/register', user.register);
 // Export API routes
 module.exports = router;
-
 
 //CRUD: create (post), read (get), update (post or put), delete

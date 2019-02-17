@@ -8,9 +8,8 @@ var secret = require('../../config').secret;   //used to assign jwt tokens, secr
 var passport = require('passport');
 
 //Define a schema = define data that goes into database
-var Schema = mongoose.Schema;
 
-var UserSchema = new Schema({   //new user object                                             match (regex) - only allows letters/numbers
+var UserSchema = new mongoose.Schema({   //new user object                                             match (regex) - only allows letters/numbers
   username: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/^[a-zA-Z0-9]+$/, 'is invalid'], index: true},
   email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
   image: String,    //url image
@@ -51,5 +50,4 @@ UserSchema.methods.toAuthJSON = function(){   //returns when user logs in
   };
 };
 
-//exports users
-module.exports = mongoose.model('Users', UserSchema);
+mongoose.model('User', UserSchema);

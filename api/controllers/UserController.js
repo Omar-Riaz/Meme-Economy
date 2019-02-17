@@ -1,9 +1,7 @@
 //CRUD
-var express = require("express");
-var mongoose = require("mongoose");
 var passport = require("passport");
-var User = require("../models/User");
-var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
+var User = mongoose.model('User');
 
 //register controller
 module.exports.register = function(req,res) {
@@ -12,7 +10,7 @@ module.exports.register = function(req,res) {
   user.username = req.body.username;
   user.email = req.body.email;
 
-  user.setPassword(req.body.password);
+  user.setPassword(String(req.body.password));
   user.save(function(err) {
     var token;
 
