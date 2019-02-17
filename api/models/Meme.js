@@ -5,6 +5,8 @@ var Schema = mongoose.Schema;
 var MemeSchema = new Schema({
   title: String,
   image: String,
-  buy: Number,
-  sell: Number
+  bid: Number,
+  ask: Number
 }, {timestamps: true});
+
+mongoose.model('Meme', MemeSchema);

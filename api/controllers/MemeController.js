@@ -1,8 +1,7 @@
-function setPrice(req, res) {
-  var memeId = req.body.memeId;
-  Meme.findById
-}
+var mongoose = require("mongoose");
+var Meme = mongoose.model('Meme');
 
-function getPrice(req, res) {
-  var memeId = req.body.
-}
+module.exports.meme = function(req, res) {
+  var meme = new Meme();
+  meme.
+};
