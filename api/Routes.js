@@ -13,6 +13,8 @@ router.get('/', function (req, res) {   //getting data from server
 
 router.post('/register', userController.register);
 
+router.post('/login', userController.login);
+
 // Export API routes
 module.exports = router;
 
