@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Avatar from '@material-ui/core/Avatar';
+// import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
@@ -14,6 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import withStyles from '@material-ui/core/styles/withStyles';
 import imag from '../images/login.png';
 import Pikachu from 'react-avatar';
+import Avatar from 'react-avatar';
+import '../css/Signin.css'
 
 
 const styles = theme => ({
@@ -56,14 +58,16 @@ class SignIn extends React.Component {
     const classes = this.props; 
   return (
     <main className={classes.main}>
+      <center>
       <CssBaseline />
       <Paper className={classes.paper} style= {{backgroundColor: '#fafafa', 'boxShadow': 'none'}}>
-
-        <Pikachu style={{'margin-bottom': '20px', 'margin-top': '-70px'}}
-        
-        name={"hh"}
-        src={imag}
-        size="100"/>
+        <Avatar 
+          name={this.props.fullName}
+          color={Avatar.getRandomColor('sitebase', ['red', 'green', 'blue'])}
+          round={true}
+          size="100"
+          src={imag}
+        />
           
         {/* <Avatar className={classes.avatar}> */}
           {/* <LockOutlinedIcon /> */}
@@ -96,6 +100,7 @@ class SignIn extends React.Component {
           
         </form>
       </Paper>
+      </center>
     </main>
   );
 }
