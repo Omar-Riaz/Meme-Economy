@@ -2,7 +2,7 @@
 // Initialize express router
 var router = require('express').Router();
 var userController = require('./controllers/UserController.js');
-var memeController = required('./controllers/MemeController.js')
+// var memeController = required('./controllers/MemeController.js')
 
 // Set default API response
 router.get('/', function (req, res) {   //getting data from server
@@ -14,7 +14,7 @@ router.get('/', function (req, res) {   //getting data from server
 
 router.post('/register', userController.register);
 router.post('/login', userController.login);
-router.get('/meme', memeController.meme);
+// router.get('/meme', memeController.meme);
 
 // Export API routes
 module.exports = router;
