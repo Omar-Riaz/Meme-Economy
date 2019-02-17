@@ -9,8 +9,8 @@ render ((
     <BrowserRouter basename="/">
         <Switch>
             <Route exact path="/" component= {App}/>
-            <Route path="/Homepage" component= {Homepage}/>
-            <Route path="/AApage" component={Aa}/>
+            <Route path="/Homepage/:id" component= {Homepage}/>
+            <Route path="/AApage/" component={Aa}/>
         </Switch>
     </BrowserRouter>
     ), document.getElementById("root"));

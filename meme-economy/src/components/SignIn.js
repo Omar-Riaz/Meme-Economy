@@ -17,7 +17,6 @@ import Pikachu from 'react-avatar';
 import Avatar from 'react-avatar';
 import '../css/Signin.css'
 
-
 const styles = theme => ({
   main: {
     width: 'auto',
@@ -54,8 +53,16 @@ const styles = theme => ({
 });
 
 class SignIn extends React.Component {
+
+   constructor(props){
+      super(props);
+      this.state={
+        username:'',
+        password:''
+      }
+  }
   render() {
-    const classes = this.props; 
+  const classes = this.props; 
   return (
     <main className={classes.main}>
       <center>
@@ -87,7 +94,26 @@ class SignIn extends React.Component {
             <Input name="password" type="password" id="password" autoComplete="current-password" />
           </FormControl>
           <Button style={{'boxShadow': 'none', backgroundColor: "#B6C8BC"}}
-                    onClick={() => {classes.var.history.push('/AApage')}}
+                    onClick={() => {
+                      fetch('https://jsonplaceholder.typicode.com/todos/1'
+                      // , {
+                      //   method: "post",
+                      //   headers: {
+                      //     'Accept': 'application/json',
+                      //     'Content-Type': 'application/json'
+                      //   },body: JSON.stringify({
+                      //     email: "ihhrfeoiwho@jfiorhjoi.com",//this.props.email,
+                      //     password: "hfihrewoifhh",//this.props.password,
+                      //   })}
+                        )
+                      .then((res) => res.json())
+                      .then((data) => {
+                        console.log('data:', data);
+                        window.location.pathname = '/Homepage/'+data.id;
+                      })
+                      .catch((error) => {
+
+                      })}}
             type="button"
             fullWidth
             variant="contained"
